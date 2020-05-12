@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoos = require('mongoos');
+const mongoose = require('mongoose');
 
 const routes = require('./routes');
 
@@ -10,6 +10,6 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoos.connect(process.env.MONGODB_URL || 'mongodb://localhost/todo_mongoDB')
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/todo_mongoDB', { useNewUrlParser: true, useUnifiedTopology: true})
 
 app.listen(PORT);

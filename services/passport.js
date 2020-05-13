@@ -1,5 +1,5 @@
 const passport = require('passport');
-const { Strategy: JwtStrategy, ExtractJwt } = require('passort-jwt');
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 
 const { User } = require('./../models');
 
@@ -8,7 +8,7 @@ const { secret } = require('./../config');
 //Setup option for jwt
 const jwtOption = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secreetOrKey: secret,
+  secretOrKey: secret,
 }
 
 //Create jwt streategy for handling jwt

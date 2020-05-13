@@ -7,8 +7,12 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/todo_mongoDB', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 
 app.use(routes);
+
+// this will make it so that passport knows we have strategies
+require('./services/passport');
+
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/todo_mongoDB', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 app.listen(PORT);

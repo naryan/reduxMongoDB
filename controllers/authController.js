@@ -13,7 +13,9 @@ function tokenForUser(user){
 }
 
 module.exports = {
+  
   signUp: async (req, res) => {
+    console.log("Im hit inside singup");
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({ error: 'You must provide both email and a password' });
@@ -32,5 +34,6 @@ module.exports = {
     } catch (e) {
       return res.status(403).json(e);
     }
-  }
+  },
+  signIn: (req,res) => res.status(200).json({ token: tokenForUser(req.user) })
 };
